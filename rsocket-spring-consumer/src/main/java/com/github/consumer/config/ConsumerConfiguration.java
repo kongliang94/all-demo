@@ -4,6 +4,7 @@ import io.rsocket.RSocket;
 import io.rsocket.RSocketFactory;
 import io.rsocket.frame.decoder.PayloadDecoder;
 import io.rsocket.transport.netty.client.TcpClientTransport;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -21,7 +22,7 @@ public class ConsumerConfiguration {
                 .connect()
                 .dataMimeType(MimeTypeUtils.APPLICATION_JSON_VALUE)
                 .frameDecoder(PayloadDecoder.ZERO_COPY)
-                .transport(TcpClientTransport.create(7000))
+                .transport(TcpClientTransport.create("47.96.70.206",7000))
                 .start()
                 .block();
     }
