@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: Admin-Client
+  boot:
+    admin:
+      client:
+        url: http://192.168.3.38:8000
+        username: admin
+        password: daxiang
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

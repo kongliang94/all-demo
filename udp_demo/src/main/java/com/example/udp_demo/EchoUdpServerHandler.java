@@ -42,5 +42,6 @@ public class EchoUdpServerHandler extends SimpleChannelInboundHandler<DatagramPa
         //buff.writeBytes(hexString2Bytes(body));
         // 回复一条信息给客户端
         //channelHandlerContext.writeAndFlush(new DatagramPacket(buff, datagramPacket.sender())).sync();
+
     }
 }

@@ -1,14 +1,11 @@
 package com.example.udp_demo;
 
+import com.example.udp_demo.monitor.ParkingLockInfo;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-/**
- * @Auther: KL
- * @Date: 2019/5/8 18:02
- * @Description:
- */
+import java.util.List;
+
 @Data
 @Builder
 public class BleGatewayMsg {
@@ -28,6 +25,8 @@ public class BleGatewayMsg {
     private String result;
     //下发指令内容
     private String content;
+
+    private List<ParkingLockInfo> parkingLockInfos;
     //预留字段
     private String reservedField;
     //校验值

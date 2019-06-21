@@ -22,14 +22,19 @@ public class ConsumerConfiguration {
                 .connect()
                 .dataMimeType(MimeTypeUtils.APPLICATION_JSON_VALUE)
                 .frameDecoder(PayloadDecoder.ZERO_COPY)
-                .transport(TcpClientTransport.create("47.96.70.206",7000))
+                //.transport(TcpClientTransport.create("47.96.70.206",7000)) 个人服务器已关闭
+                .transport(TcpClientTransport.create("127.0.0.1",7000))
                 .start()
                 .block();
     }
 
     @Bean
     RSocketRequester requester(RSocketStrategies rSocketStrategies) {
-        return RSocketRequester.create(this.rSocket(),
+
+        //废弃版
+        //RSocketRequester.create(this.rSocket(),MimeTypeUtils.APPLICATION_JSON, rSocketStrategies);
+
+        return  RSocketRequester.wrap(this.rSocket(),
                 MimeTypeUtils.APPLICATION_JSON, rSocketStrategies);
     }
 }

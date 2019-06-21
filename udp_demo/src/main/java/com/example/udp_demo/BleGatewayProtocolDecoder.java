@@ -45,7 +45,7 @@ public class BleGatewayProtocolDecoder {
                     break;
 
         }
-        bleGatewayMsg.setDeviceMac(macAddr);
+        bleGatewayMsg.setGatewayMac(macAddr);
         bleGatewayMsg.setCheckValue(NettyUtils.directBufferToHexString(byteBuf.readBytes(1)));
         bleGatewayMsg.setTail(NettyUtils.directBufferToHexString(byteBuf.readBytes(1)));
         return bleGatewayMsg;

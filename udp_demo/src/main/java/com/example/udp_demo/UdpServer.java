@@ -37,6 +37,8 @@ public class UdpServer implements Runnable{
             ChannelFuture f = b.bind(PORT).sync();
             log.info("开启server prot: {}",PORT);
             // 等待阻塞直到server被关闭
+
+            log.info("channel:{}",f.channel());
             f.channel().closeFuture().sync();
         }catch (InterruptedException e){
             e.printStackTrace();
@@ -52,11 +54,6 @@ public class UdpServer implements Runnable{
      */
     public void proactivelyDeliveringData(){
 
-        EventLoopGroup group = new NioEventLoopGroup();
-        Bootstrap b = new Bootstrap();
-        b.group(group)
-                .channel(NioDatagramChannel.class)
-                .handler(new EchoUdpServerHandler());
 
     }
 }

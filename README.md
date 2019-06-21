@@ -13,5 +13,8 @@ spring5.2中的新特性rsocket---consumer
 ### udp_demo
 关于netty的udp的demo,比较具有借鉴性
 
-### Java_restudy
+### Java-restudy
 java一些细节重新学习
+
+### springboot-admin-client
+SBA的客户端实例,未实现服务注册
