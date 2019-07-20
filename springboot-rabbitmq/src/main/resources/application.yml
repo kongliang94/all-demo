@@ -1,0 +1,13 @@
+spring:
+  rabbitmq:
+    host: 106.12.56.87
+    port: 5672
+    username: user
+    password: 123456
+    listener:
+      simple:
+        acknowledge-mode: manual #采用手动应答
+        concurrency: 1          #当前监听容器数
+        max-concurrency: 1    #最大数
+        retry:                 # 是否支持重试
+          enabled: true
