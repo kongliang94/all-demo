@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.mssql.mapper.AirDayApiSrcMapper">
+  <resultMap id="BaseResultMap" type="com.github.mssql.domain.AirDayApiSrc">
+    <!--@mbg.generated-->
+    <id column="StationCode" jdbcType="VARCHAR" property="stationCode" />
+    <id column="Date" jdbcType="TIMESTAMP" property="date" />
+    <result column="Id" jdbcType="INTEGER" property="id" />
+    <result column="Area" jdbcType="VARCHAR" property="area" />
+    <result column="SO2" jdbcType="DECIMAL" property="so2" />
+    <result column="PM10" jdbcType="DECIMAL" property="pm10" />
+    <result column="NO2" jdbcType="DECIMAL" property="no2" />
+    <result column="API" jdbcType="INTEGER" property="api" />
+    <result column="PrimaryPollutant" jdbcType="VARCHAR" property="primaryPollutant" />
+    <result column="Type" jdbcType="VARCHAR" property="type" />
+    <result column="Level" jdbcType="VARCHAR" property="level" />
+    <result column="Description" jdbcType="VARCHAR" property="description" />
+    <result column="SO2_Mark" jdbcType="VARCHAR" property="so2Mark" />
+    <result column="NO2_Mark" jdbcType="VARCHAR" property="no2Mark" />
+    <result column="PM10_Mark" jdbcType="VARCHAR" property="pm10Mark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    StationCode, [Date], Id, Area, SO2, PM10, NO2, API, PrimaryPollutant, [Type], [Level], 
+    Description, SO2_Mark, NO2_Mark, PM10_Mark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from Air_day_API_Src
+    where StationCode = #{stationCode,jdbcType=VARCHAR}
+      and [Date] = #{date,jdbcType=TIMESTAMP}
+  </select>
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from Air_day_API_Src
+    where Id=#{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from Air_day_API_Src
+    where StationCode = #{stationCode,jdbcType=VARCHAR}
+      and [Date] = #{date,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.github.mssql.domain.AirDayApiSrc">
+    <!--@mbg.generated-->
+    insert into Air_day_API_Src (StationCode, [Date], Id, 
+      Area, SO2, PM10, NO2, 
+      API, PrimaryPollutant, [Type], 
+      [Level], Description, SO2_Mark, 
+      NO2_Mark, PM10_Mark)
+    values (#{stationCode,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{id,jdbcType=INTEGER}, 
+      #{area,jdbcType=VARCHAR}, #{so2,jdbcType=DECIMAL}, #{pm10,jdbcType=DECIMAL}, #{no2,jdbcType=DECIMAL}, 
+      #{api,jdbcType=INTEGER}, #{primaryPollutant,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{level,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{so2Mark,jdbcType=VARCHAR}, 
+      #{no2Mark,jdbcType=VARCHAR}, #{pm10Mark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.mssql.domain.AirDayApiSrc">
+    <!--@mbg.generated-->
+    insert into Air_day_API_Src
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationCode != null">
+        StationCode,
+      </if>
+      <if test="date != null">
+        [Date],
+      </if>
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="area != null">
+        Area,
+      </if>
+      <if test="so2 != null">
+        SO2,
+      </if>
+      <if test="pm10 != null">
+        PM10,
+      </if>
+      <if test="no2 != null">
+        NO2,
+      </if>
+      <if test="api != null">
+        API,
+      </if>
+      <if test="primaryPollutant != null">
+        PrimaryPollutant,
+      </if>
+      <if test="type != null">
+        [Type],
+      </if>
+      <if test="level != null">
+        [Level],
+      </if>
+      <if test="description != null">
+        Description,
+      </if>
+      <if test="so2Mark != null">
+        SO2_Mark,
+      </if>
+      <if test="no2Mark != null">
+        NO2_Mark,
+      </if>
+      <if test="pm10Mark != null">
+        PM10_Mark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationCode != null">
+        #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=TIMESTAMP},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="so2 != null">
+        #{so2,jdbcType=DECIMAL},
+      </if>
+      <if test="pm10 != null">
+        #{pm10,jdbcType=DECIMAL},
+      </if>
+      <if test="no2 != null">
+        #{no2,jdbcType=DECIMAL},
+      </if>
+      <if test="api != null">
+        #{api,jdbcType=INTEGER},
+      </if>
+      <if test="primaryPollutant != null">
+        #{primaryPollutant,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="so2Mark != null">
+        #{so2Mark,jdbcType=VARCHAR},
+      </if>
+      <if test="no2Mark != null">
+        #{no2Mark,jdbcType=VARCHAR},
+      </if>
+      <if test="pm10Mark != null">
+        #{pm10Mark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.mssql.domain.AirDayApiSrc">
+    <!--@mbg.generated-->
+    update Air_day_API_Src
+    <set>
+      <if test="id != null">
+        Id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        Area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="so2 != null">
+        SO2 = #{so2,jdbcType=DECIMAL},
+      </if>
+      <if test="pm10 != null">
+        PM10 = #{pm10,jdbcType=DECIMAL},
+      </if>
+      <if test="no2 != null">
+        NO2 = #{no2,jdbcType=DECIMAL},
+      </if>
+      <if test="api != null">
+        API = #{api,jdbcType=INTEGER},
+      </if>
+      <if test="primaryPollutant != null">
+        PrimaryPollutant = #{primaryPollutant,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        [Type] = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        [Level] = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        Description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="so2Mark != null">
+        SO2_Mark = #{so2Mark,jdbcType=VARCHAR},
+      </if>
+      <if test="no2Mark != null">
+        NO2_Mark = #{no2Mark,jdbcType=VARCHAR},
+      </if>
+      <if test="pm10Mark != null">
+        PM10_Mark = #{pm10Mark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where StationCode = #{stationCode,jdbcType=VARCHAR}
+      and [Date] = #{date,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.mssql.domain.AirDayApiSrc">
+    <!--@mbg.generated-->
+    update Air_day_API_Src
+    set Id = #{id,jdbcType=INTEGER},
+      Area = #{area,jdbcType=VARCHAR},
+      SO2 = #{so2,jdbcType=DECIMAL},
+      PM10 = #{pm10,jdbcType=DECIMAL},
+      NO2 = #{no2,jdbcType=DECIMAL},
+      API = #{api,jdbcType=INTEGER},
+      PrimaryPollutant = #{primaryPollutant,jdbcType=VARCHAR},
+      [Type] = #{type,jdbcType=VARCHAR},
+      [Level] = #{level,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=VARCHAR},
+      SO2_Mark = #{so2Mark,jdbcType=VARCHAR},
+      NO2_Mark = #{no2Mark,jdbcType=VARCHAR},
+      PM10_Mark = #{pm10Mark,jdbcType=VARCHAR}
+    where StationCode = #{stationCode,jdbcType=VARCHAR}
+      and [Date] = #{date,jdbcType=TIMESTAMP}
+  </update>
+
+<!--auto generated by MybatisCodeHelper on 2019-07-19-->
+  <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from Air_day_API_Src
+    </select>
+</mapper>
