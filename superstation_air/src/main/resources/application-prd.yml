@@ -1,0 +1,13 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://106.12.56.87:3306/super_station?serverTimezone=UTC&characterEncoding=utf8
+    username: root
+    password: PKUER@2019
+  jackson:
+    date-format: HH:mm
+    default-property-inclusion: non_null
+mybatis:
+  type-aliases-package: com.superstation.entity
+  mapper-locations: classpath:mapper/*Mapper.xml
