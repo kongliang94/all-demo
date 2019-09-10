@@ -6,7 +6,7 @@ spring:
     username: root
     password: PKUER@2019
   jackson:
-    date-format: HH:mm
+    date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null
 mybatis:
   type-aliases-package: com.superstation.entity

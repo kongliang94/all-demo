@@ -13,6 +13,13 @@
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
   </resultMap>
+
+  <resultMap id="AirResultMap" type="com.superstation.entity.dto.AirChartDto">
+    <!--@mbg.generated-->
+    <result column="time_point" jdbcType="TIMESTAMP" property="timePoint" />
+    <result column="mon_value1" jdbcType="VARCHAR" property="monValue1" />
+    <result column="mon_value2" jdbcType="VARCHAR" property="monValue2" />
+  </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     id, station_code, detection_item_code, time_point, data_key, mon_value, mark, gmt_create, 
@@ -147,6 +154,16 @@
       where detection_item_code=#{detectionItemCode,jdbcType=VARCHAR}
       and mon_value>0
       and time_point
+      between #{start} and #{end}
+    </select>
+  <select id="selectByRangeAndTwoCode" resultMap="AirResultMap">
+      SELECT
+	a1.time_point, a1.mon_value as mon_value1,b1.mon_value as mon_value2
+    FROM
+	( SELECT a.time_point, a.mon_value FROM air_1m_2019_1001B a WHERE a.detection_item_code = #{detectionItemCode1,jdbcType=VARCHAR} ) a1
+	LEFT JOIN ( SELECT b.time_point, b.mon_value FROM air_1m_2019_1001B b WHERE b.detection_item_code = #{detectionItemCode2,jdbcType=VARCHAR} ) b1 ON a1.time_point = b1.time_point
+	where
+	a1.time_point
       between #{start} and #{end}
     </select>
 </mapper>

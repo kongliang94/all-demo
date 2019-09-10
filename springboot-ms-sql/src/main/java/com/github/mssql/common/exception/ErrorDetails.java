@@ -1,4 +1,4 @@
-package com.github.mssql;
+package com.github.mssql.common.exception;
 
 import java.util.Date;
 

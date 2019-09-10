@@ -53,7 +53,7 @@ public class HelloSender {
 		new Thread(new Runnable() {		
 			@Override
 			public void run() {
-				rabbitTemplate.convertAndSend(QueueConfig.DELAY_QUEUE_PER_MESSAGE_TTL_NAME,
+				rabbitTemplate.convertAndSend(QueueConfig.REFUND_QUEUE_PER_MESSAGE_TTL,
 						object,
 						new ExpirationMessagePostProcessor(expiration));
 			}

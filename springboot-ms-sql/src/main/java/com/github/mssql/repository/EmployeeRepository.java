@@ -1,5 +1,6 @@
-package com.github.mssql;
+package com.github.mssql.repository;
 
+import com.github.mssql.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

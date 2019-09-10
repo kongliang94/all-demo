@@ -1,4 +1,4 @@
-package com.github.mssql;
+package com.github.mssql.model;
 
 import javax.persistence.*;
 

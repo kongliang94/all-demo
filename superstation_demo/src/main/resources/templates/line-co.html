@@ -19,7 +19,7 @@ var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 var app = {};
 option = null;
-$.get('http://localhost:8080/air1m20191001B/103/all', function (data) {
+$.get('http://localhost:8090/air1m20191001B/103/all', function (data) {
     myChart.setOption(option = {
         title: {
             text: 'Beijing CO'

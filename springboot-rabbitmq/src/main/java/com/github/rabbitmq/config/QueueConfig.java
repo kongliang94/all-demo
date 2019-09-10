@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class QueueConfig {
 
+
+    public final static String REFUND_QUEUE_PER_MESSAGE_TTL = "refund_queue_per_message_ttl";
     /**
      * 发送到该队列的message会在一段时间
      * 后过期并进入到delay_process_queue
@@ -67,6 +69,15 @@ public class QueueConfig {
     @Bean
     DirectExchange perQueueTTLExchange() {
         return new DirectExchange(PER_QUEUE_TTL_EXCHANGE_NAME);
+    }
+
+
+    @Bean
+    Queue refundQueuePerMessageTTL() {
+        return QueueBuilder.durable(REFUND_QUEUE_PER_MESSAGE_TTL)
+                .withArgument("x-dead-letter-exchange", DELAY_EXCHANGE_NAME) // DLX，dead letter发送到的exchange
+                .withArgument("x-dead-letter-routing-key", DELAY_PROCESS_QUEUE_NAME) // dead letter携带的routing key
+                .build();
     }
 
     /**

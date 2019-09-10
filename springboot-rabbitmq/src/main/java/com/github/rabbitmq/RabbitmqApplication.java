@@ -20,8 +20,8 @@ public class RabbitmqApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        for (int i=1;i<8;i++){
-            helloSender.send("hello rabbit "+i,3000L*i);
-        }
+
+            helloSender.send("hello rabbit ",60000L);
+
     }
 }

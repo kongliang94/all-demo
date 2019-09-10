@@ -1,4 +1,4 @@
-package com.github.mssql;
+package com.github.mssql.common.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

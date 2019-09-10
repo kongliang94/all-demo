@@ -1,6 +1,7 @@
 package com.superstation.mapper;
 
 import com.superstation.entity.Air1m20191001B;
+import com.superstation.entity.dto.AirChartDto;
 import org.apache.ibatis.annotations.Mapper;import org.apache.ibatis.annotations.Param;
 
 import java.time.LocalDateTime;
@@ -29,4 +30,5 @@ public interface Air1m20191001BMapper {
 
     List<Air1m20191001B> selectByRange(@Param("detectionItemCode") String detectionItemCode,@Param("start")String start, @Param("end")String end);
 
+    List<AirChartDto> selectByRangeAndTwoCode(@Param("detectionItemCode1") String detectionItemCode1,@Param("detectionItemCode2") String detectionItemCode2,@Param("start")String start, @Param("end")String end);
 }

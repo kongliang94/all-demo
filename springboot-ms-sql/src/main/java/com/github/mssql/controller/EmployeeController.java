@@ -1,8 +1,17 @@
-package com.github.mssql;
+package com.github.mssql.controller;
 
+import com.github.mssql.common.exception.ResourceNotFoundException;
+import com.github.mssql.model.Employee;
+import com.github.mssql.model.Moniter5m20191001b;
+import com.github.mssql.model.SysUser;
 import com.github.mssql.model.TestData;
+import com.github.mssql.repository.EmployeeRepository;
+import com.github.mssql.repository.Moniter5m20191001bRepository;
+import com.github.mssql.repository.SysUserRepository;
 import com.github.mssql.repository.TestDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +35,12 @@ public class EmployeeController {
     @Autowired
     private TestDataRepository testDataRepository;
 
+    @Autowired
+    private SysUserRepository sysUserRepository;
+
+    @Autowired
+    private Moniter5m20191001bRepository moniter5m20191001bRepository;
+
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
@@ -37,6 +52,18 @@ public class EmployeeController {
         TestData employee = testDataRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
         return ResponseEntity.ok().body(employee);
+    }
+
+    @GetMapping("/sysuser")
+    public  List<SysUser> getAllUser()
+            throws ResourceNotFoundException {
+        return sysUserRepository.findAll();
+    }
+
+    @GetMapping("/5m")
+    public Page<Moniter5m20191001b> getAllMoniter5m()
+            throws ResourceNotFoundException {
+        return moniter5m20191001bRepository.findAll(new PageRequest(1, 20));
     }
 
     @GetMapping("/employees/{id}")
