@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.mssql.mapper.BsdDetectionItemMapper">
+  <resultMap id="BaseResultMap" type="com.github.mssql.domain.BsdDetectionItem">
+    <!--@mbg.generated-->
+    <id column="Id" jdbcType="VARCHAR" property="id" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="ParentId" jdbcType="VARCHAR" property="parentid" />
+    <result column="Alias" jdbcType="VARCHAR" property="alias" />
+    <result column="DisplayName" jdbcType="VARCHAR" property="displayname" />
+    <result column="TypeId" jdbcType="VARCHAR" property="typeid" />
+    <result column="UnitId" jdbcType="VARCHAR" property="unitid" />
+    <result column="Rank" jdbcType="INTEGER" property="rank" />
+    <result column="Enabled" jdbcType="BIT" property="enabled" />
+    <result column="DetectionItemCode" jdbcType="VARCHAR" property="detectionitemcode" />
+    <result column="AvailableUnitIds" jdbcType="VARCHAR" property="availableunitids" />
+    <result column="RelativeMolecularMass" jdbcType="INTEGER" property="relativemolecularmass" />
+    <result column="InstrumentTypeId" jdbcType="VARCHAR" property="instrumenttypeid" />
+    <result column="DisplayUnitId" jdbcType="VARCHAR" property="displayunitid" />
+    <result column="UseName" jdbcType="VARCHAR" property="usename" />
+    <result column="Decimal" jdbcType="INTEGER" property="decimal" />
+    <result column="DataKeyUnitId" jdbcType="VARCHAR" property="datakeyunitid" />
+    <result column="DataKeyDisplayUnitId" jdbcType="VARCHAR" property="datakeydisplayunitid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, [Name], ParentId, [Alias], DisplayName, TypeId, UnitId, [Rank], Enabled, DetectionItemCode, 
+    AvailableUnitIds, RelativeMolecularMass, InstrumentTypeId, DisplayUnitId, UseName, 
+    [Decimal], DataKeyUnitId, DataKeyDisplayUnitId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from BSD_DetectionItem
+    where Id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from BSD_DetectionItem
+    where Id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.github.mssql.domain.BsdDetectionItem">
+    <!--@mbg.generated-->
+    insert into BSD_DetectionItem (Id, [Name], ParentId, 
+      [Alias], DisplayName, TypeId, 
+      UnitId, [Rank], Enabled, 
+      DetectionItemCode, AvailableUnitIds, RelativeMolecularMass, 
+      InstrumentTypeId, DisplayUnitId, UseName, 
+      [Decimal], DataKeyUnitId, DataKeyDisplayUnitId
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=VARCHAR}, 
+      #{alias,jdbcType=VARCHAR}, #{displayname,jdbcType=VARCHAR}, #{typeid,jdbcType=VARCHAR}, 
+      #{unitid,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER}, #{enabled,jdbcType=BIT}, 
+      #{detectionitemcode,jdbcType=VARCHAR}, #{availableunitids,jdbcType=VARCHAR}, #{relativemolecularmass,jdbcType=INTEGER}, 
+      #{instrumenttypeid,jdbcType=VARCHAR}, #{displayunitid,jdbcType=VARCHAR}, #{usename,jdbcType=VARCHAR}, 
+      #{decimal,jdbcType=INTEGER}, #{datakeyunitid,jdbcType=VARCHAR}, #{datakeydisplayunitid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.mssql.domain.BsdDetectionItem">
+    <!--@mbg.generated-->
+    insert into BSD_DetectionItem
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="name != null">
+        [Name],
+      </if>
+      <if test="parentid != null">
+        ParentId,
+      </if>
+      <if test="alias != null">
+        [Alias],
+      </if>
+      <if test="displayname != null">
+        DisplayName,
+      </if>
+      <if test="typeid != null">
+        TypeId,
+      </if>
+      <if test="unitid != null">
+        UnitId,
+      </if>
+      <if test="rank != null">
+        [Rank],
+      </if>
+      <if test="enabled != null">
+        Enabled,
+      </if>
+      <if test="detectionitemcode != null">
+        DetectionItemCode,
+      </if>
+      <if test="availableunitids != null">
+        AvailableUnitIds,
+      </if>
+      <if test="relativemolecularmass != null">
+        RelativeMolecularMass,
+      </if>
+      <if test="instrumenttypeid != null">
+        InstrumentTypeId,
+      </if>
+      <if test="displayunitid != null">
+        DisplayUnitId,
+      </if>
+      <if test="usename != null">
+        UseName,
+      </if>
+      <if test="decimal != null">
+        [Decimal],
+      </if>
+      <if test="datakeyunitid != null">
+        DataKeyUnitId,
+      </if>
+      <if test="datakeydisplayunitid != null">
+        DataKeyDisplayUnitId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="displayname != null">
+        #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="unitid != null">
+        #{unitid,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BIT},
+      </if>
+      <if test="detectionitemcode != null">
+        #{detectionitemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="availableunitids != null">
+        #{availableunitids,jdbcType=VARCHAR},
+      </if>
+      <if test="relativemolecularmass != null">
+        #{relativemolecularmass,jdbcType=INTEGER},
+      </if>
+      <if test="instrumenttypeid != null">
+        #{instrumenttypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="displayunitid != null">
+        #{displayunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="usename != null">
+        #{usename,jdbcType=VARCHAR},
+      </if>
+      <if test="decimal != null">
+        #{decimal,jdbcType=INTEGER},
+      </if>
+      <if test="datakeyunitid != null">
+        #{datakeyunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="datakeydisplayunitid != null">
+        #{datakeydisplayunitid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.mssql.domain.BsdDetectionItem">
+    <!--@mbg.generated-->
+    update BSD_DetectionItem
+    <set>
+      <if test="name != null">
+        [Name] = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        ParentId = #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        [Alias] = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="displayname != null">
+        DisplayName = #{displayname,jdbcType=VARCHAR},
+      </if>
+      <if test="typeid != null">
+        TypeId = #{typeid,jdbcType=VARCHAR},
+      </if>
+      <if test="unitid != null">
+        UnitId = #{unitid,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        [Rank] = #{rank,jdbcType=INTEGER},
+      </if>
+      <if test="enabled != null">
+        Enabled = #{enabled,jdbcType=BIT},
+      </if>
+      <if test="detectionitemcode != null">
+        DetectionItemCode = #{detectionitemcode,jdbcType=VARCHAR},
+      </if>
+      <if test="availableunitids != null">
+        AvailableUnitIds = #{availableunitids,jdbcType=VARCHAR},
+      </if>
+      <if test="relativemolecularmass != null">
+        RelativeMolecularMass = #{relativemolecularmass,jdbcType=INTEGER},
+      </if>
+      <if test="instrumenttypeid != null">
+        InstrumentTypeId = #{instrumenttypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="displayunitid != null">
+        DisplayUnitId = #{displayunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="usename != null">
+        UseName = #{usename,jdbcType=VARCHAR},
+      </if>
+      <if test="decimal != null">
+        [Decimal] = #{decimal,jdbcType=INTEGER},
+      </if>
+      <if test="datakeyunitid != null">
+        DataKeyUnitId = #{datakeyunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="datakeydisplayunitid != null">
+        DataKeyDisplayUnitId = #{datakeydisplayunitid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.mssql.domain.BsdDetectionItem">
+    <!--@mbg.generated-->
+    update BSD_DetectionItem
+    set [Name] = #{name,jdbcType=VARCHAR},
+      ParentId = #{parentid,jdbcType=VARCHAR},
+      [Alias] = #{alias,jdbcType=VARCHAR},
+      DisplayName = #{displayname,jdbcType=VARCHAR},
+      TypeId = #{typeid,jdbcType=VARCHAR},
+      UnitId = #{unitid,jdbcType=VARCHAR},
+      [Rank] = #{rank,jdbcType=INTEGER},
+      Enabled = #{enabled,jdbcType=BIT},
+      DetectionItemCode = #{detectionitemcode,jdbcType=VARCHAR},
+      AvailableUnitIds = #{availableunitids,jdbcType=VARCHAR},
+      RelativeMolecularMass = #{relativemolecularmass,jdbcType=INTEGER},
+      InstrumentTypeId = #{instrumenttypeid,jdbcType=VARCHAR},
+      DisplayUnitId = #{displayunitid,jdbcType=VARCHAR},
+      UseName = #{usename,jdbcType=VARCHAR},
+      [Decimal] = #{decimal,jdbcType=INTEGER},
+      DataKeyUnitId = #{datakeyunitid,jdbcType=VARCHAR},
+      DataKeyDisplayUnitId = #{datakeydisplayunitid,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.mssql.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.github.mssql.domain.SysUser">
+    <!--@mbg.generated-->
+    <id column="UserId" jdbcType="VARCHAR" property="userid" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="UserCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="LoginId" jdbcType="VARCHAR" property="loginid" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="DepartmentId" jdbcType="VARCHAR" property="departmentid" />
+    <result column="Status" jdbcType="VARCHAR" property="status" />
+    <result column="Rank" jdbcType="INTEGER" property="rank" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    UserId, UserName, UserCode, LoginId, [Password], DepartmentId, [Status], [Rank]
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_User
+    where UserId = #{userid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from SYS_User
+    where UserId = #{userid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.github.mssql.domain.SysUser">
+    <!--@mbg.generated-->
+    insert into SYS_User (UserId, UserName, UserCode, 
+      LoginId, [Password], DepartmentId, 
+      [Status], [Rank])
+    values (#{userid,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR}, 
+      #{loginid,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{departmentid,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{rank,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.mssql.domain.SysUser">
+    <!--@mbg.generated-->
+    insert into SYS_User
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        UserId,
+      </if>
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="usercode != null">
+        UserCode,
+      </if>
+      <if test="loginid != null">
+        LoginId,
+      </if>
+      <if test="password != null">
+        [Password],
+      </if>
+      <if test="departmentid != null">
+        DepartmentId,
+      </if>
+      <if test="status != null">
+        [Status],
+      </if>
+      <if test="rank != null">
+        [Rank],
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginid != null">
+        #{loginid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        #{departmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        #{rank,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.mssql.domain.SysUser">
+    <!--@mbg.generated-->
+    update SYS_User
+    <set>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        UserCode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="loginid != null">
+        LoginId = #{loginid,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        [Password] = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentid != null">
+        DepartmentId = #{departmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        [Status] = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="rank != null">
+        [Rank] = #{rank,jdbcType=INTEGER},
+      </if>
+    </set>
+    where UserId = #{userid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.mssql.domain.SysUser">
+    <!--@mbg.generated-->
+    update SYS_User
+    set UserName = #{username,jdbcType=VARCHAR},
+      UserCode = #{usercode,jdbcType=VARCHAR},
+      LoginId = #{loginid,jdbcType=VARCHAR},
+      [Password] = #{password,jdbcType=VARCHAR},
+      DepartmentId = #{departmentid,jdbcType=VARCHAR},
+      [Status] = #{status,jdbcType=VARCHAR},
+      [Rank] = #{rank,jdbcType=INTEGER}
+    where UserId = #{userid,jdbcType=VARCHAR}
+  </update>
+</mapper>

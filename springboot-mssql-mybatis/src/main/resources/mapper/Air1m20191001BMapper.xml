@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.mssql.mapper.Air1m20191001BMapper">
+  <resultMap id="BaseResultMap" type="com.superstation.entity.Air1m20191001B">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="station_code" jdbcType="VARCHAR" property="stationCode" />
+    <result column="detection_item_code" jdbcType="VARCHAR" property="detectionItemCode" />
+    <result column="time_point" jdbcType="TIMESTAMP" property="timePoint" />
+    <result column="data_key" jdbcType="VARCHAR" property="dataKey" />
+    <result column="mon_value" jdbcType="VARCHAR" property="monValue" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, station_code, detection_item_code, time_point, data_key, mon_value, mark, gmt_create, 
+    gmt_modified
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from air_1m_2019_1001B
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from air_1m_2019_1001B
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.superstation.entity.Air1m20191001B" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into air_1m_2019_1001B (station_code, detection_item_code, time_point, 
+      data_key, mon_value, mark, 
+      gmt_create, gmt_modified)
+    values (#{stationCode,jdbcType=VARCHAR}, #{detectionItemCode,jdbcType=VARCHAR}, #{timePoint,jdbcType=TIMESTAMP}, 
+      #{dataKey,jdbcType=VARCHAR}, #{monValue,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
+      #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.superstation.entity.Air1m20191001B" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into air_1m_2019_1001B
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stationCode != null">
+        station_code,
+      </if>
+      <if test="detectionItemCode != null">
+        detection_item_code,
+      </if>
+      <if test="timePoint != null">
+        time_point,
+      </if>
+      <if test="dataKey != null">
+        data_key,
+      </if>
+      <if test="monValue != null">
+        mon_value,
+      </if>
+      <if test="mark != null">
+        mark,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stationCode != null">
+        #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="detectionItemCode != null">
+        #{detectionItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="timePoint != null">
+        #{timePoint,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataKey != null">
+        #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="monValue != null">
+        #{monValue,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.superstation.entity.Air1m20191001B">
+    <!--@mbg.generated-->
+    update air_1m_2019_1001B
+    <set>
+      <if test="stationCode != null">
+        station_code = #{stationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="detectionItemCode != null">
+        detection_item_code = #{detectionItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="timePoint != null">
+        time_point = #{timePoint,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataKey != null">
+        data_key = #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="monValue != null">
+        mon_value = #{monValue,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.superstation.entity.Air1m20191001B">
+    <!--@mbg.generated-->
+    update air_1m_2019_1001B
+    set station_code = #{stationCode,jdbcType=VARCHAR},
+      detection_item_code = #{detectionItemCode,jdbcType=VARCHAR},
+      time_point = #{timePoint,jdbcType=TIMESTAMP},
+      data_key = #{dataKey,jdbcType=VARCHAR},
+      mon_value = #{monValue,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

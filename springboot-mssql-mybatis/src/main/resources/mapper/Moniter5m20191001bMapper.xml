@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.mssql.mapper.Moniter5m20191001bMapper">
+  <resultMap id="BaseResultMap" type="com.github.mssql.domain.Moniter5m20191001b">
+    <!--@mbg.generated-->
+    <id column="TimePoint" jdbcType="TIMESTAMP" property="timepoint" />
+    <id column="Brand" jdbcType="VARCHAR" property="brand" />
+    <id column="Series" jdbcType="VARCHAR" property="series" />
+    <id column="StatusName" jdbcType="VARCHAR" property="statusname" />
+    <id column="PollutantCode" jdbcType="VARCHAR" property="pollutantcode" />
+    <result column="Id" jdbcType="INTEGER" property="id" />
+    <result column="StationCode" jdbcType="VARCHAR" property="stationcode" />
+    <result column="Value" jdbcType="VARCHAR" property="value" />
+    <result column="Mark" jdbcType="VARCHAR" property="mark" />
+    <result column="Unit" jdbcType="VARCHAR" property="unit" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    TimePoint, Brand, Series, StatusName, PollutantCode, Id, StationCode, [Value], Mark, 
+    Unit
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from Moniter_5m_2019_1001B
+    where TimePoint = #{timepoint,jdbcType=TIMESTAMP}
+      and Brand = #{brand,jdbcType=VARCHAR}
+      and Series = #{series,jdbcType=VARCHAR}
+      and StatusName = #{statusname,jdbcType=VARCHAR}
+      and PollutantCode = #{pollutantcode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from Moniter_5m_2019_1001B
+    where TimePoint = #{timepoint,jdbcType=TIMESTAMP}
+      and Brand = #{brand,jdbcType=VARCHAR}
+      and Series = #{series,jdbcType=VARCHAR}
+      and StatusName = #{statusname,jdbcType=VARCHAR}
+      and PollutantCode = #{pollutantcode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.github.mssql.domain.Moniter5m20191001b">
+    <!--@mbg.generated-->
+    insert into Moniter_5m_2019_1001B (TimePoint, Brand, Series, 
+      StatusName, PollutantCode, Id, 
+      StationCode, [Value], Mark, 
+      Unit)
+    values (#{timepoint,jdbcType=TIMESTAMP}, #{brand,jdbcType=VARCHAR}, #{series,jdbcType=VARCHAR}, 
+      #{statusname,jdbcType=VARCHAR}, #{pollutantcode,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, 
+      #{stationcode,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.github.mssql.domain.Moniter5m20191001b">
+    <!--@mbg.generated-->
+    insert into Moniter_5m_2019_1001B
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="timepoint != null">
+        TimePoint,
+      </if>
+      <if test="brand != null">
+        Brand,
+      </if>
+      <if test="series != null">
+        Series,
+      </if>
+      <if test="statusname != null">
+        StatusName,
+      </if>
+      <if test="pollutantcode != null">
+        PollutantCode,
+      </if>
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="stationcode != null">
+        StationCode,
+      </if>
+      <if test="value != null">
+        [Value],
+      </if>
+      <if test="mark != null">
+        Mark,
+      </if>
+      <if test="unit != null">
+        Unit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="timepoint != null">
+        #{timepoint,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brand != null">
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="series != null">
+        #{series,jdbcType=VARCHAR},
+      </if>
+      <if test="statusname != null">
+        #{statusname,jdbcType=VARCHAR},
+      </if>
+      <if test="pollutantcode != null">
+        #{pollutantcode,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stationcode != null">
+        #{stationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.github.mssql.domain.Moniter5m20191001b">
+    <!--@mbg.generated-->
+    update Moniter_5m_2019_1001B
+    <set>
+      <if test="id != null">
+        Id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="stationcode != null">
+        StationCode = #{stationcode,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        [Value] = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        Mark = #{mark,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        Unit = #{unit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TimePoint = #{timepoint,jdbcType=TIMESTAMP}
+      and Brand = #{brand,jdbcType=VARCHAR}
+      and Series = #{series,jdbcType=VARCHAR}
+      and StatusName = #{statusname,jdbcType=VARCHAR}
+      and PollutantCode = #{pollutantcode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.github.mssql.domain.Moniter5m20191001b">
+    <!--@mbg.generated-->
+    update Moniter_5m_2019_1001B
+    set Id = #{id,jdbcType=INTEGER},
+      StationCode = #{stationcode,jdbcType=VARCHAR},
+      [Value] = #{value,jdbcType=VARCHAR},
+      Mark = #{mark,jdbcType=VARCHAR},
+      Unit = #{unit,jdbcType=VARCHAR}
+    where TimePoint = #{timepoint,jdbcType=TIMESTAMP}
+      and Brand = #{brand,jdbcType=VARCHAR}
+      and Series = #{series,jdbcType=VARCHAR}
+      and StatusName = #{statusname,jdbcType=VARCHAR}
+      and PollutantCode = #{pollutantcode,jdbcType=VARCHAR}
+  </update>
+</mapper>
