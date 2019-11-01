@@ -12,30 +12,42 @@ import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.RSocketStrategies;
 import org.springframework.util.MimeTypeUtils;
 
+import java.time.Duration;
+
 @Lazy
 @Configuration
 public class ConsumerConfiguration {
 
-    @Bean
-    RSocket rSocket() {
+    /*@Bean
+    public RSocket rSocket() {
         return RSocketFactory
                 .connect()
-                .dataMimeType(MimeTypeUtils.APPLICATION_JSON_VALUE)
+                .dataMimeType(MimeTypeUtils.ALL_VALUE)
                 .frameDecoder(PayloadDecoder.ZERO_COPY)
-                //.transport(TcpClientTransport.create("47.96.70.206",7000)) 个人服务器已关闭
-                .transport(TcpClientTransport.create("127.0.0.1",7000))
+                .transport(TcpClientTransport.create(7000))
                 .start()
                 .block();
+    }*/
+
+    /*@Bean
+    public RSocketStrategies rSocketStrategies(){
+        return RSocketStrategies.builder()
+                .encoders(encoders -> encoders.add(new Jackson2CborEncoder()))
+                .decoders(decoders -> decoders.add(new Jackson2CborDecoder()))
+                .build();
     }
-
+*/
     @Bean
-    RSocketRequester requester(RSocketStrategies rSocketStrategies) {
-
-        //废弃版
-        //RSocketRequester.create(this.rSocket(),MimeTypeUtils.APPLICATION_JSON, rSocketStrategies);
-
-        return  RSocketRequester.wrap(this.rSocket(),
-                MimeTypeUtils.APPLICATION_JSON, rSocketStrategies);
+    RSocketRequester rSocketRequester(RSocketStrategies rSocketStrategies) {
+        return RSocketRequester.builder()
+                .rsocketFactory(factory -> factory
+                        // MIME (Multipurpose Internet Mail Extensions) 是描述消息内容类型的因特网标准。
+                        // MIME 消息能包含文本、图像、音频、视频以及其他应用程序专用的数据。
+                        .dataMimeType(MimeTypeUtils.ALL_VALUE)
+                        .frameDecoder(PayloadDecoder.ZERO_COPY))
+                .rsocketStrategies(rSocketStrategies)
+                .connect(TcpClientTransport.create(7000))
+                .retry().block();
     }
 }
 
