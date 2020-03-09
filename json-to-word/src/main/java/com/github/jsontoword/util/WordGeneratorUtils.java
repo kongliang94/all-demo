@@ -7,6 +7,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 
 import java.io.*;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,7 +76,8 @@ public class WordGeneratorUtils {
             if (c.getChildren() == null || c.getChildren().size() == 0) {
                 //无子报表
                 datas.put("title_" + c.getSerial(), c.getTitle());
-                datas.put("base64_" + c.getSerial(), c.getBase64());
+                //datas.put("base64_" + c.getSerial(), c.getBase64());
+                datas.put("base64_" + c.getSerial(),GetLocalImageStr());
                 datas.put("summary_" + c.getSerial(), c.getSummary());
             } else {
                 //有多个子报表
@@ -88,5 +90,29 @@ public class WordGeneratorUtils {
             }
         }
         return datas;
+    }
+
+    public static String GetLocalImageStr(){
+        return GetImageStr("d:/image/beef.jpg");
+    }
+
+    public static String GetImageStr(String imgFile) {
+        //将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+        InputStream in = null;
+        byte[] data = null;
+        //读取图片字节数组
+        try {
+            in = new FileInputStream(imgFile);
+            data = new byte[in.available()];
+            in.read(data);
+            in.close();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        //对字节数组Base64编码
+        Base64.Encoder encoder = Base64.getEncoder();
+        String result = encoder.encodeToString(data);//返回Base64编码过的字节数组字符串
+        return result;
     }
 }
