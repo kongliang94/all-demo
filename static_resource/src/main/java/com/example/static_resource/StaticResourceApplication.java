@@ -22,7 +22,6 @@ class TestController{
 
     @GetMapping("test")
     public static  String  getUrl() {
-
         String path = null;
         try {
             String serverpath= ResourceUtils.getURL("classpath:static").getPath().replace("%20"," ").replace('/', '\\');
