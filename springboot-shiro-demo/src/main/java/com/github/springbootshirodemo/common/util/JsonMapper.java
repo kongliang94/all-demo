@@ -138,8 +138,6 @@ public class JsonMapper {
             mapper.readerForUpdating(object).readValue(jsonString);
         } catch (JsonProcessingException e) {
             log.warn("update json string:" + jsonString + " to object:" + object + " error.", e);
-        } catch (IOException e) {
-            log.warn("update json string:" + jsonString + " to object:" + object + " error.", e);
         }
     }
 

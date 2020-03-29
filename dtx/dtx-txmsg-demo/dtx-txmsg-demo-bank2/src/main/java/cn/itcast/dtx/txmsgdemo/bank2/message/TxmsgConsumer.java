@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,8 +17,12 @@ import org.springframework.stereotype.Component;
 @RocketMQMessageListener(consumerGroup = "consumer_group_txmsg_bank2",topic = "topic_txmsg")
 public class TxmsgConsumer implements RocketMQListener<String> {
 
-    @Autowired
-    AccountInfoService accountInfoService;
+
+    final AccountInfoService accountInfoService;
+
+    public TxmsgConsumer(AccountInfoService accountInfoService) {
+        this.accountInfoService = accountInfoService;
+    }
 
     //接收消息
     @Override

@@ -4,7 +4,6 @@ import cn.itcast.dtx.txmsgdemo.bank2.dao.AccountInfoDao;
 import cn.itcast.dtx.txmsgdemo.bank2.model.AccountChangeEvent;
 import cn.itcast.dtx.txmsgdemo.bank2.service.AccountInfoService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,8 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class AccountInfoServiceImpl implements AccountInfoService {
 
-    @Autowired
-    AccountInfoDao accountInfoDao;
+
+    final AccountInfoDao accountInfoDao;
+
+    public AccountInfoServiceImpl(AccountInfoDao accountInfoDao) {
+        this.accountInfoDao = accountInfoDao;
+    }
 
     //更新账户，增加金额
     @Override

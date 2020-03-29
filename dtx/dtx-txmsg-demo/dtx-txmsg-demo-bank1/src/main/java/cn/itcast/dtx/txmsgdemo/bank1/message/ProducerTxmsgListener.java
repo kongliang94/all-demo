@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.RocketMQTransactionListener;
 import org.apache.rocketmq.spring.core.RocketMQLocalTransactionListener;
 import org.apache.rocketmq.spring.core.RocketMQLocalTransactionState;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +21,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RocketMQTransactionListener(txProducerGroup = "producer_group_txmsg_bank1")  //注意重点生产组，这里要和生产者保持一致
 public class ProducerTxmsgListener implements RocketMQLocalTransactionListener {
 
-    @Autowired
-    AccountInfoService accountInfoService;
 
-    @Autowired
-    AccountInfoDao accountInfoDao;
+    final AccountInfoService accountInfoService;
+
+
+    final AccountInfoDao accountInfoDao;
+
+    public ProducerTxmsgListener(AccountInfoService accountInfoService, AccountInfoDao accountInfoDao) {
+        this.accountInfoService = accountInfoService;
+        this.accountInfoDao = accountInfoDao;
+    }
 
     // 事务消息发送后的回调方法，当消息发送给mq成功，此方法被回调
     @Override

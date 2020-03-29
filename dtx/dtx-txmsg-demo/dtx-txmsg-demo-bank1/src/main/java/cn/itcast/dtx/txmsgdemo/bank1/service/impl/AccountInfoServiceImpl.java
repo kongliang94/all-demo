@@ -6,7 +6,6 @@ import cn.itcast.dtx.txmsgdemo.bank1.service.AccountInfoService;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
@@ -20,11 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class AccountInfoServiceImpl implements AccountInfoService {
 
-    @Autowired
-    AccountInfoDao accountInfoDao;
+    final AccountInfoDao accountInfoDao;
 
-    @Autowired
-    RocketMQTemplate rocketMQTemplate;
+    final RocketMQTemplate rocketMQTemplate;
+
+    public AccountInfoServiceImpl(AccountInfoDao accountInfoDao, RocketMQTemplate rocketMQTemplate) {
+        this.accountInfoDao = accountInfoDao;
+        this.rocketMQTemplate = rocketMQTemplate;
+    }
 
 
     //向mq发送转账消息
