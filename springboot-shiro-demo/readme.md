@@ -1,0 +1,3 @@
+重写Shiro的Cache保存读取和Cache管理器
+关闭Shiro自带的session
+设置自定义Cache缓存
