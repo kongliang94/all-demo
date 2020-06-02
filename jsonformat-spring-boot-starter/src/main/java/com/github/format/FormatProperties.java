@@ -1,4 +1,4 @@
-package com.github;
+package com.github.format;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
