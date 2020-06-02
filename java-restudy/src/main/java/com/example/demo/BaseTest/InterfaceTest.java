@@ -23,7 +23,7 @@ abstract class MyThing{
         System.out.println("我是thing,没人可以改变,age=1");
     }
 
-    protected void gettwo(){
+    protected void getTwo(){
 
     }
 
@@ -52,13 +52,13 @@ interface Thing{
     private void getAge(){
         System.out.println("我是thing,没人可以改变,age=1");
     }
-    //public void getOne(){ } // 报错 接口不应该有方法体
+    //public void getOne(){ } // 报错 接口抽象方法不应该有方法体
 
-    //protected void gettwo(){ }// 报错 protected不应该出现在这里
+    //protected void getTwo(){ }// 报错 protected不应该出现interface这里
 
     public void getName();
 
-    //private void getThree2();// 报错 private方法在接口中应该有方法体
+    //private void getThree();// 报错 private方法在接口中应该有方法体
 
     //public static void getAddr(); // 报错 static方法在接口中应该有方法体
 
@@ -67,7 +67,7 @@ interface Thing{
         return "";
     }
 
-    // default void test(); //报错，必须有方法体
+   // default void test(); //报错，必须有方法体
 
     default void test(){
         System.out.println("接口的test");
@@ -77,9 +77,13 @@ interface Thing{
 
     static int a = 1;
     static final int b = 2;
+    // private static int a1 = 1; //报错 private 不应该出现在这里
+    public static final int b1 = 2;
 }
 
 class Pen implements Thing{
+
+    static int a = 5; //覆盖父类的a
 
     private static String staticString=getAddr();
     @Override
