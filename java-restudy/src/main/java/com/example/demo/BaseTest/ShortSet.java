@@ -18,6 +18,8 @@ public class ShortSet {
             s.add(i);
             System.out.println(i-1);
 
+            // 这里i-1 被包装为Integer了
+            //System.out.println(getType(i-1));
             s.remove(i-1);
 
         }
@@ -25,6 +27,11 @@ public class ShortSet {
 
 
         System.out.println(s.size());
+
+    }
+
+    public static String getType(Object test) {
+        return test.getClass().getName().toString();
 
     }
 }
