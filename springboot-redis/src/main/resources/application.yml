@@ -1,0 +1,9 @@
+spring:
+  redis:
+    database: 1  #Redis索引0~15，默认为0
+    #host: 106.12.56.87
+    port: 16379
+    password:  qwer@tyui #密码（默认为空）
+    host: localhost
+    timeout: 10000    #连接超时时间（毫秒）
+debug: true
