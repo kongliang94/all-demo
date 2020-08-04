@@ -90,7 +90,9 @@ public class AliQuestionAboutCF {
                 for (;;){
                     Thread.sleep(interval);
                     total+=interval;
-                    if (total>=timeInSeconds) break;
+                    if (total>=timeInSeconds) {
+                        break;
+                    }
                     if (canceled)
                     {
                         System.out.println(name+"inter end");
