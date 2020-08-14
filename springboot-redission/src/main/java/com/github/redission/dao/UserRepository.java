@@ -13,14 +13,7 @@ import org.springframework.stereotype.Component;
 public class UserRepository {
     @Autowired
     private RedissonClient redissonClient;
-
-    @Autowired
-    private RedisTemplate<String, String> template;
-
-    @Autowired
-    private ReactiveStringRedisTemplate reactiveStringRedisTemplate;
-
-
+    
     /**
      *  RedissonClient操作实例可参考
      *  https://github.com/redisson/redisson/wiki/6.-%E5%88%86%E5%B8%83%E5%BC%8F%E5%AF%B9%E8%B1%A1
@@ -40,7 +33,6 @@ public class UserRepository {
     public String setUser(User user) {
         RMap<String, User> map = redissonClient.getMap("myMap");
         map.put(user.getId(),user);
-        template.opsForValue().set("myname","lklsk");
         return user.getId();
     }
 }

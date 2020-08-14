@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.16.RELEASE</version>
+		<version>2.3.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.github</groupId>
-	<artifactId>redis-lock-redisson</artifactId>
+	<artifactId>springboot-redission</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>redis-lock-redisson</name>
+	<name>springboot-redission</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -24,41 +24,36 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!--redisson依赖-->
-		<dependency>
-			<groupId>org.redisson</groupId>
-			<artifactId>redisson</artifactId>
-			<version>3.13.2</version>
-		</dependency>
-
-
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency>
-
-		<!-- commons-lang3 -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.8.1</version>
-		</dependency>
-		<!-- guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>29.0-jre</version>
-		</dependency>
-
+			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+		</dependency>-->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.10.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.redisson</groupId>
+			<artifactId>redisson-spring-boot-starter</artifactId>
+			<version>3.13.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 
