@@ -1,3 +1,4 @@
+/*
 package com.example.demo.math;
 
 import org.apache.commons.math3.linear.Array2DRowRealMatrix;
@@ -88,3 +89,4 @@ class StrMath {
         return applyAsDouble(value);
     }
 }
+*/

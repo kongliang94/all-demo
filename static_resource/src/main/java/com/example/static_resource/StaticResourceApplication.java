@@ -20,6 +20,10 @@ public class StaticResourceApplication {
 @RestController
 class TestController{
 
+    @GetMapping("")
+    public  String  getIndex() {
+        return "我是3033";
+    }
     @GetMapping("test")
     public static  String  getUrl() {
         String path = null;
