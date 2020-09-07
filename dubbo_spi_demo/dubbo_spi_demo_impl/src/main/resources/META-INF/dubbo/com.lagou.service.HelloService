@@ -1,2 +1,3 @@
 human=com.lagou.service.impl.HumanHelloService
 dog=com.lagou.service.impl.DogHelloService
+cat=com.lagou.service.impl.CatHelloService
