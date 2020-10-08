@@ -15,26 +15,3 @@ public class SpringBootWebDemoApplication {
     }
 
 }
-
-@RestController
-class TestController{
-
-    private FormatTemplate formatTemplate;
-
-    TestController(FormatTemplate formatTemplate) {
-        this.formatTemplate = formatTemplate;
-    }
-
-    @GetMapping("/test")
-    public String formatTest(){
-
-        return formatTemplate.doFormat(User.builder().id("1").name("ll").build());
-    }
-}
-
-@Data
-@Builder
-class User{
-    private String id;
-    private String name;
-}
