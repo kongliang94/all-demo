@@ -1,2 +1,4 @@
-package com.github.bigdata.kafka;public class KafkaDemoApplicationTests {
+package com.github.bigdata.kafka;
+
+public class KafkaDemoApplicationTests {
 }

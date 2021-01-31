@@ -1,4 +1,4 @@
-package com.github.hbase;
+package com.github.bigdata.hbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;

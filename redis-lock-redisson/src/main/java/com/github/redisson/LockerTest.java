@@ -36,10 +36,10 @@ public class LockerTest {
         return "=================================";
     }
     @Async
-    @Scheduled(fixedRate = 10)
+    @Scheduled(fixedRate = 100)
     public void test() throws Exception { // 多线程访问
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 50; i++) {
             new Thread(()->{
                 try {
                     lockDecreaseStock();

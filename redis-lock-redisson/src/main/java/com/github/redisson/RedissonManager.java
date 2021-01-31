@@ -60,7 +60,6 @@ public class RedissonManager {
             return factory;
         }
 
-        private Config config = new Config();
 
         /**
          * 根据连接类型获取对应连接方式的配置,基于策略模式

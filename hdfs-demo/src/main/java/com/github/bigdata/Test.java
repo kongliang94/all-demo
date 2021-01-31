@@ -1,4 +1,4 @@
-package com.github.hdfs;
+package com.github.bigdata;
 
 import java.util.Arrays;
 import java.util.List;

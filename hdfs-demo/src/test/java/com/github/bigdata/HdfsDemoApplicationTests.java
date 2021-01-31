@@ -1,4 +1,4 @@
-package com.github.hdfs;
+package com.github.bigdata;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
@@ -9,7 +9,6 @@ import org.apache.hadoop.util.Progressable;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.*;
 import java.net.URI;
@@ -73,6 +72,30 @@ class HdfsDemoApplicationTests {
 		out.close();
 	}
 
+	public void uploadFile(){
+		Configuration config=new Configuration();
+		config.set("fs.defaultFS","hdfs://hadoop001:9000");
+
+		FileSystem fs= null;
+		try {
+			fs = FileSystem.get(config);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			fs.copyFromLocalFile(new Path("D:\\kl.txt"),new Path("/hdfs/api"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			fs.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	@Test
 	public void exist() throws Exception {
 		boolean exists = fileSystem.exists(new Path("/hdfs-api/test/a.txt"));
