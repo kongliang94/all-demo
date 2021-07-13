@@ -28,6 +28,10 @@ import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
+import io.netty.handler.timeout.IdleState;
+import io.netty.handler.timeout.IdleStateEvent;
+import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.util.CharsetUtil;
 
 /**
  * Echoes back any received data from a client.
@@ -56,11 +60,28 @@ public final class EchoServer {
             b.group(bossGroup, workerGroup)
              .channel(NioServerSocketChannel.class)
              .option(ChannelOption.SO_BACKLOG, 100)
+                    .option(ChannelOption.SO_KEEPALIVE,true)
+
              .handler(new LoggingHandler(LogLevel.INFO))
              .childHandler(new ChannelInitializer<SocketChannel>() {
                  @Override
                  public void initChannel(SocketChannel ch) throws Exception {
                      ChannelPipeline p = ch.pipeline();
+                     ch.pipeline().addLast(new IdleStateHandler(5, 0, 0));
+                     // ChannelDuplexHandler 可以同时作为入站和出站处理器
+                     ch.pipeline().addLast(new ChannelDuplexHandler() {
+                         // 用来触发特殊事件
+                         @Override
+                         public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+                             IdleStateEvent event = (IdleStateEvent) evt;
+                             // 触发了读空闲事件
+                             if (event.state() == IdleState.READER_IDLE) {
+                                 System.out.println("已经 10s 没有读到数据了");
+                                 ctx.channel().writeAndFlush(Unpooled.copiedBuffer("没有读到数据",
+                                         CharsetUtil.UTF_8));
+                             }
+                         }
+                     });
                      if (sslCtx != null) {
                          p.addLast(sslCtx.newHandler(ch.alloc()));
                      }

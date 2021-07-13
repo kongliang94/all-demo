@@ -36,7 +36,7 @@ public final class EchoClient {
 
     static final boolean SSL = System.getProperty("ssl") != null;
     static final String HOST = System.getProperty("host", "127.0.0.1");
-    static final int PORT = Integer.parseInt(System.getProperty("port", "8007"));
+    static final int PORT = Integer.parseInt(System.getProperty("port", "8080"));
     static final int SIZE = Integer.parseInt(System.getProperty("size", "256"));
 
     public static void main(String[] args) throws Exception {
@@ -75,13 +75,15 @@ public final class EchoClient {
 
             while (currentCount > 0) {
 
-                Thread.sleep(1000);
+                Thread.sleep(1500);
 
                 String msgBody = "JZ12440100012012-11-08 15:45:00001f@@@SO2,0.121,;NO2,0.097,;CO,0.055,;O3,0.102,;雨量,8.9,;风速,10.2,;tek07####";
 
 
+                f.channel().writeAndFlush(Unpooled.copiedBuffer(msgBody,
+                        CharsetUtil.UTF_8));
                 //发送数据
-                f.channel().writeAndFlush(msgBody.getBytes("GB2312"));
+                //f.channel().writeAndFlush(msgBody.getBytes("GB2312"));
 
                 //System.out.println(msgBody);
 

@@ -46,11 +46,11 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
     public void channelActive(ChannelHandlerContext ctx) {
         ctx.writeAndFlush(Unpooled.copiedBuffer("Netty hello ####",
                 CharsetUtil.UTF_8));
-        for (int i = 0; i < 50; i++) {
-            ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks!",
+        for (int i = 0; i < 5; i++) {
+            ctx.writeAndFlush(Unpooled.copiedBuffer("kl rocks! ####",
                     CharsetUtil.UTF_8));
         }
-        ctx.writeAndFlush(Unpooled.copiedBuffer("####",
+        ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks ####",
                 CharsetUtil.UTF_8));
     }
 
