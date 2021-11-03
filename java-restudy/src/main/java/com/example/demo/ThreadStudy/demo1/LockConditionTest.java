@@ -12,9 +12,11 @@ public class LockConditionTest {
         Lock lock=new ReentrantLock();
         Condition condition1=lock.newCondition();
         Condition condition2=lock.newCondition();
+        Condition condition3=lock.newCondition();
 
         char[] ca="123456789".toCharArray();
         char[] cb="abcdefghi".toCharArray();
+        char[] cc="ihgfedcba".toCharArray();
 
 
 
@@ -43,7 +45,7 @@ public class LockConditionTest {
                 for (char c : cb) {
                     System.out.print(c);
                     try {
-                        condition1.signal();
+                        condition3.signal();
                         condition2.await();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -54,5 +56,24 @@ public class LockConditionTest {
                 lock.unlock();
             }
         },"t2").start();
+
+
+        new Thread(()->{
+            lock.lock();
+            try{
+                for (char c : cc) {
+                    System.out.print(c);
+                    try {
+                        condition1.signal();
+                        condition3.await();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                condition3.signal();
+            } finally {
+                lock.unlock();
+            }
+        },"t3").start();
     }
 }

@@ -21,22 +21,26 @@ public class Test1 {
     //    ThreadPoolExecutor.DiscardPolicy   和AbortPolicy一样,只不过不抛异常,静默丢弃
     // 线程池
     private final static ThreadPoolExecutor executor = new ThreadPoolExecutor(16, 24, 2000, TimeUnit.MILLISECONDS,
-            new ArrayBlockingQueue<Runnable>(90),new CustomThreadFactory("测试类别线程"));
+            new ArrayBlockingQueue<Runnable>(30),new CustomThreadFactory("测试类别线程"));
     public static void main(String[] args) {
         // 参数
-        for (int i = 0; i < 108; i++) {
+        for (int i = 0; i < 1008; i++) {
             int finalI = i;
-            executor.execute(()->{
-                try {
-                    Thread.sleep(10000);
-                    System.out.println(Thread.currentThread().getName()+" "+finalI);
-                    // 可以看到当队列里排满任务后，将开启最大线程数
-                    System.out.println("executor.getActiveCount():"+executor.getActiveCount());
-                    System.out.println("executor.getQueue().size():"+executor.getQueue().size());
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
+            try {
+                executor.execute(() -> {
+                    try {
+                        Thread.sleep(100);
+                        System.out.println(Thread.currentThread().getName() + " " + finalI);
+                        // 可以看到当队列里排满任务后，将开启最大线程数
+                        System.out.println("executor.getActiveCount():" + executor.getActiveCount());
+                        System.out.println("executor.getQueue().size():" + executor.getQueue().size());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }catch (RejectedExecutionException ree){
+                System.out.println("hello java");
+            }
         }
 
         executor.shutdown();

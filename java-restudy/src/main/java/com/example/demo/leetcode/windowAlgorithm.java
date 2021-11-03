@@ -1,6 +1,7 @@
 package com.example.demo.leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class windowAlgorithm {
@@ -10,6 +11,36 @@ public class windowAlgorithm {
         String t = "BDE";
         System.out.println(slidingWindow(s,t));
         System.out.println(minWindow(s,t));
+        String s1="pwwkewpfe";
+        System.out.println(getMinSubStr(s1));
+    }
+
+    /**
+     *  最小无重复字串
+     * @param s
+     * @return
+     */
+    public static int getMinSubStr(String s){
+
+        int left=0;
+        int right=0;
+        int length=0;
+
+        HashSet<Character> set = new HashSet<>();
+        char[] arrays = s.toCharArray();
+
+        while (right<s.length()){
+            // 滑动窗口，right先走，然后满足条件后left再走破坏条件
+            if (set.contains(arrays[right])){
+                set.remove(arrays[left++]);
+            }else {
+                set.add(arrays[right++]);
+            }
+            if (length<set.size()){
+                length=set.size();
+            }
+        }
+        return length;
     }
 
     /* 滑动窗口算法框架 */

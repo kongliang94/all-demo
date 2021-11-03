@@ -49,9 +49,9 @@ abstract class MyThing{
 }
 
 interface Thing{
-    private void getAge(){
+    /*private void getAge(){  // 1.8报错 11不报错
         System.out.println("我是thing,没人可以改变,age=1");
-    }
+    }*/
     //public void getOne(){ } // 报错 接口抽象方法不应该有方法体
 
     //protected void getTwo(){ }// 报错 protected不应该出现interface这里

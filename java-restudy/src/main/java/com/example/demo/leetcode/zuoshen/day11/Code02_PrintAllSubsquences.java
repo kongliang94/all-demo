@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Code02_PrintAllSubsquences {
 
+
 	public static List<String> subs(String s) {
 		char[] str = s.toCharArray();
 		String path = "";
@@ -55,7 +56,7 @@ public class Code02_PrintAllSubsquences {
 	}
 
 	public static void main(String[] args) {
-		String test = "aacc";
+		String test = "ab";
 		List<String> ans1 = subs(test);
 		List<String> ans2 = subsNoRepeat(test);
 
