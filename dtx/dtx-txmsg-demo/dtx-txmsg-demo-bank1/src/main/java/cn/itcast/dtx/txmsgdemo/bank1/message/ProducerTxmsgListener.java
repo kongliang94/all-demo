@@ -45,8 +45,11 @@ public class ProducerTxmsgListener implements RocketMQLocalTransactionListener {
             //将accountChange（json）转成AccountChangeEvent
             AccountChangeEvent accountChangeEvent = JSONObject.parseObject(accountChangeString, AccountChangeEvent.class);
             //执行本地事务，扣减金额
+            log.info("执行本地事务，扣减金额");
             accountInfoService.doUpdateAccountBalance(accountChangeEvent);
             //当返回RocketMQLocalTransactionState.COMMIT，自动向mq发送commit消息，mq将消息的状态改为可消费
+            //return RocketMQLocalTransactionState.COMMIT;
+            //Thread.sleep(5000);
             return RocketMQLocalTransactionState.COMMIT;
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,6 +62,8 @@ public class ProducerTxmsgListener implements RocketMQLocalTransactionListener {
     //事务状态回查，查询是否扣减金额
     @Override
     public RocketMQLocalTransactionState checkLocalTransaction(Message message) {
+
+        log.info("事务状态回查，查询是否扣减金额");
         //解析message，转成AccountChangeEvent
         String messageString = new String((byte[]) message.getPayload());
         JSONObject jsonObject = JSONObject.parseObject(messageString);

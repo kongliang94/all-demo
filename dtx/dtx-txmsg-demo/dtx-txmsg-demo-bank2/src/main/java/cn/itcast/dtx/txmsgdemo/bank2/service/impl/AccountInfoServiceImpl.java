@@ -36,7 +36,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         //添加事务记录，用于幂等
         accountInfoDao.addTx(accountChangeEvent.getTxNo());
         if(accountChangeEvent.getAmount() == 5){
-            throw new RuntimeException("人为制造异常");
+            //throw new RuntimeException("人为制造异常");
         }
     }
 }

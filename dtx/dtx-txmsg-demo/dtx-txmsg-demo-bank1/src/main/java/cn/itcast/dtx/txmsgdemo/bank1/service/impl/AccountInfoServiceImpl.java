@@ -63,7 +63,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         //添加事务日志
         accountInfoDao.addTx(accountChangeEvent.getTxNo());
         if(accountChangeEvent.getAmount() == 3){
-            throw new RuntimeException("人为制造异常");
+            //throw new RuntimeException("人为制造异常");
         }
     }
 }
