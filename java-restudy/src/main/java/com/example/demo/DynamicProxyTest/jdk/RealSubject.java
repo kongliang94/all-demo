@@ -1,4 +1,4 @@
-package com.example.demo.DynamicProxyTest;
+package com.example.demo.DynamicProxyTest.jdk;
 
 public class RealSubject implements Subject
 {
